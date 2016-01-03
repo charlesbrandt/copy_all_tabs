@@ -1,0 +1,46 @@
+*2016.01.03 08:30:23 code
+/c/public/copy_all_tabs/instances.txt
+/c/public/copy_all_tabs/launch.sh
+/c/public/copy_all_tabs/firefox/README.md
+/c/public/copy_all_tabs/firefox/package.json
+/c/public/copy_all_tabs/firefox/index.js
+
+*2016.01.02 16:43:47 code
+/c/public/copy_all_tabs/instances.txt
+/c/public/copy_all_tabs/launch.sh
+/c/public/copy_all_tabs/copyalltabs/README.md
+/c/public/copy_all_tabs/copyalltabs/package.json
+/c/public/copy_all_tabs/copyalltabs/index.js
+
+*2016.01.02 16:42:47 todo
+/c/public/copy_all_tabs/instances.txt
+/c/public/copy_all_tabs/launch.sh
+/c/public/copy_all_tabs/journal.txt
+/c/public/copy_all_tabs/todo.txt
+
+*2016.01.02 16:28:42 code
+/c/alpha/copy_tabs/instances.txt
+/c/alpha/copy_tabs/journal.txt
+/c/alpha/copy_tabs/index.js
+/c/alpha/copy_tabs/package.json
+/c/alpha/copy_tabs/README.md
+/c/alpha/copy_tabs/launch.sh
+
+*2016.01.02 11:58:31 code
+/c/alpha/copy_tabs/instances.txt
+/c/alpha/copy_tabs/launch.sh
+/c/alpha/copy_tabs/README.md
+/c/alpha/copy_tabs/package.json
+/c/alpha/copy_tabs/index.js
+
+*2016.01.02 11:37:32 code
+/c/alpha/copy_tabs/instances.txt
+/c/alpha/copy_tabs/launch.sh
+
+*2016.01.02 11:37:32 todo
+/c/alpha/copy_tabs/instances.txt
+/c/alpha/copy_tabs/launch.sh
+/c/alpha/copy_tabs/journal.txt
+/c/alpha/copy_tabs/todo.txt
+
+

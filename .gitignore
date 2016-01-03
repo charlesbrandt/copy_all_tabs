@@ -1,0 +1,14 @@
+# use glob syntax.
+syntax: glob
+
+*.elc
+*.pyc
+*~
+*\#
+.*.swp
+._*
+.DS_Store
+.Trashes*
+.Spotlight-V100*
+.fseventsd*
+*.xpi

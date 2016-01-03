@@ -1,0 +1,41 @@
+*2016.01.02 18:50:13
+https://www.google.com/search?client=ubuntu&channel=fs&q=can+browser+extensions+access+filesystem&ie=utf-8&oe=utf-8#channel=fs&q=firefox+add-on+sdk+clipboard
+firefox add-on sdk clipboard - Google Search
+https://developer.mozilla.org/en-US/Add-ons
+Add-ons - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK
+Add-on SDK - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials#getting-started
+Tutorials - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_(jpm)
+Getting Started (jpm) - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/tabs
+tabs - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/private-browsing
+private-browsing - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Add_a_Context_Menu_Item
+Add a Context Menu Item - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/clipboard
+clipboard - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/context-menu
+context-menu - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Installation
+jpm - Mozilla | MDN
+https://addons.mozilla.org/en-US/developers/addon/copy-tabs/edit
+Edit Listing :: Copy Tabs :: Add-ons for Firefox
+
+*2016.01.02 17:29:51
+https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
+
+*2016.01.02 15:15:24
+woo hoo! copy works!
+
+about:blank
+New Tab
+https://itunes.apple.com/app/apple-store/id989804926?mt=8I
+Firefox web browser on the App Store
+https://www.mozilla.org/en-US/teach/smarton/security/?utm_source=directory-tiles&utm_medium=tiles&utm_content=SOCV1&utm_campaign=smarton
+Get smart on cybersecurity — Mozilla
+
+
+
