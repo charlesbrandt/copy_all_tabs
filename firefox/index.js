@@ -15,7 +15,7 @@ var menuCopy = cm.Item({
   onMessage: function (selection) {
     var tab_list = '';
     var active_window = tabs.activeTab.window;
-    console.log(active_window);
+    //console.log(active_window);
     
     for (let tab of tabs) {
       if (tab.window == active_window) {

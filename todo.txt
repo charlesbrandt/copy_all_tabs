@@ -7,3 +7,10 @@ configuration page for output format
 *2016.01.03 08:32:19
 maybe a button to show at top of browser to gain access to functionality
 
+*2016.01.03 19:15:04
+cd /c/public/copy_all_tabs 
+/c/public/templates/scripts/cleanup_temp_files.sh
+cd firefox
+jpm xpi
+mv @copyalltabs-0.0.3.xpi ../
+

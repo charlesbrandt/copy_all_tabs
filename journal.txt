@@ -1,3 +1,17 @@
+*2016.01.03 19:27:14 complete
+requested [2016.01.03 09:03:35]
+Please note the following for the next update:
+1) Your add-on prints debugging information to the Console, which is generally not
+allowed in production add-ons.
+
+2) Add-on contains duplicate/hidden/unused/unnecessary files or folders. These
+complicate the review process and may contain sensitive information about the system
+you created the XPI on. Such files may also create cause for rejection. Please
+correct your packaging process so that these files aren't included.
+e.g.:
+README.md~
+index.js~
+
 *2016.01.02 18:50:13
 https://www.google.com/search?client=ubuntu&channel=fs&q=can+browser+extensions+access+filesystem&ie=utf-8&oe=utf-8#channel=fs&q=firefox+add-on+sdk+clipboard
 firefox add-on sdk clipboard - Google Search
