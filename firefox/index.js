@@ -13,9 +13,13 @@ var menuCopy = cm.Item({
                  '});',
   accessKey: "t",
   onMessage: function (selection) {
-    var tab_list = '';
+    var tab_text = '';
+    var tab_list = [];
     var active_window = tabs.activeTab.window;
     //console.log(active_window);
+    var cur_pos = 0;
+    var inserted = false;
+
     
     for (let tab of tabs) {
       if (tab.window == active_window) {
@@ -23,15 +27,43 @@ var menuCopy = cm.Item({
         //way to configure different output formats
 
         //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/tabs
-        tab_list += tab.url + '\n';
-        tab_list += tab.title + '\n';
+        //this will print the tab data in the order that tabs were opened
+        //usually it's more useful to print the tabs in the order
+        //that they have been arranged currently (by index)
+        //tab_text += tab.url + '\n';
+        //tab_text += tab.title + '\n';
+
+        cur_pos = 0;
+        inserted = false;
+        var cur_item;
+        while ( (cur_pos < tab_list.length) && (inserted == false) ) {
+          cur_item = tab_list[cur_pos];
+          if (tab.index < cur_item.index) {
+            //insert tab into cur_pos of tab_list
+            tab_list.splice(cur_pos, 0, tab);
+            inserted = true;
+          }
+          cur_pos += 1;
+        }
+        if (! inserted) {
+          // add it to the end
+          tab_list.splice(cur_pos, 0, tab)
+        }
+        
       }
       else {
         //console.log("Different window", tab.window);
       }
     }
+
+    for (let tab of tab_list) {
+      tab_text += tab.url + '\n';
+      tab_text += tab.title + '\n';
+    }
+    
+    
     //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/clipboard
-    clipboard.set(tab_list);
+    clipboard.set(tab_text);
   }
 });
 

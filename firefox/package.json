@@ -1,7 +1,7 @@
 {
   "title": "Copy All Tabs",
   "name": "copyalltabs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Copy Tabs takes the address and title for each tab and creates a text list of links. The list is copied to your clipboard so you can paste it to your notes. You can also open a set of tabs from a previously saved list of links.",
   "main": "index.js",
   "permissions": {"private-browsing": true},
