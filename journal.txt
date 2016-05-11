@@ -1,3 +1,37 @@
+*2016.05.11 18:05:01
+http://two.com/
+Two.com
+
+
+*2016.05.11 17:53:57
+On linux, the tab.window property was set to null for all private windows. This resulted in all tabs in many private windows being lumped together to the clipboard on a "Copy Tabs" action. Rather than loop over all tabs and look for the current window's matching id, this version uses the window object's tabs property to loop over all the tabs for a window. No need to match window ids in this case. Simpler is better.
+
+*2016.05.11 18:00:21 links
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/private-browsing
+private-browsing - Mozilla | MDN
+https://www.google.com/search?client=ubuntu&channel=fs&q=firefox+sdk+tabs+multiple+private+windows&ie=utf-8&oe=utf-8#channel=fs&q=firefox+sdk+tab+active+window+null
+firefox sdk tab active window null - Google Search
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/tabs
+tabs - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/windows#BrowserWindow
+windows - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/private-browsing
+private-browsing - Mozilla | MDN
+http://forums.mozillazine.org/viewtopic.php?f=19&t=2696699
+Add-on SDK won't tell me a tab's window • mozillaZine Forums
+
+*2016.05.11 17:51:16
+http://two.com/
+Two.com
+
+*2016.04.15 19:28:19
+http://three.com/
+Home | Three.com
+http://two.com/
+Two.com
+https://www.one.com/en/
+Web space with One.com - Register Domains - Web Hosting | One.com
+
 *2016.01.03 19:27:14 complete
 requested [2016.01.03 09:03:35]
 Please note the following for the next update:

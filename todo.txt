@@ -1,12 +1,3 @@
-*2016.04.15 19:28:19
-http://three.com/
-Home | Three.com
-http://two.com/
-Two.com
-https://www.one.com/en/
-Web space with One.com - Register Domains - Web Hosting | One.com
-
-
 *2016.01.03 08:31:54
 chrome/chromium version using same approach
 

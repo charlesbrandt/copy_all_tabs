@@ -1,6 +1,7 @@
 var cm = require("sdk/context-menu");
 var tabs = require("sdk/tabs");
 var clipboard = require("sdk/clipboard");
+var windows = require("sdk/windows").browserWindows;
 
 //https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Add_a_Context_Menu_Item
 //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/context-menu
@@ -15,52 +16,63 @@ var menuCopy = cm.Item({
   onMessage: function (selection) {
     var tab_text = '';
     var tab_list = [];
-    var active_window = tabs.activeTab.window;
-    //console.log(active_window);
+
     var cur_pos = 0;
     var inserted = false;
 
+
+    var active_window = windows.activeWindow;
+
+    //alternative approach
+    //var active_window = tabs.activeTab.window;
+
+    //console.log(active_window);
     
-    for (let tab of tabs) {
-      if (tab.window == active_window) {
-        //TODO:
-        //way to configure different output formats
+    //rather than loop over all tabs, 
+    //for (let tab of tabs) {
 
-        //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/tabs
-        //this will print the tab data in the order that tabs were opened
-        //usually it's more useful to print the tabs in the order
-        //that they have been arranged currently (by index)
-        //tab_text += tab.url + '\n';
-        //tab_text += tab.title + '\n';
-
-        cur_pos = 0;
-        inserted = false;
-        var cur_item;
-        while ( (cur_pos < tab_list.length) && (inserted == false) ) {
-          cur_item = tab_list[cur_pos];
-          if (tab.index < cur_item.index) {
-            //insert tab into cur_pos of tab_list
-            tab_list.splice(cur_pos, 0, tab);
-            inserted = true;
-          }
-          cur_pos += 1;
-        }
-        if (! inserted) {
-          // add it to the end
-          tab_list.splice(cur_pos, 0, tab)
-        }
+    //using the windows sdk:
+    //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/windows#BrowserWindow
+    //each window has a tabs property which should do the work for us
+    for (let tab of active_window.tabs) {
+      
         
+      //console.log("Tab window: ", tab.window);
+      //console.log("Active window: ", active_window);
+      
+      //TODO:
+      //way to configure different output formats
+      
+      //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/tabs
+      //this will print the tab data in the order that tabs were opened
+      //usually it's more useful to print the tabs in the order
+      //that they have been arranged currently (by index)
+      //tab_text += tab.url + '\n';
+      //tab_text += tab.title + '\n';
+
+      cur_pos = 0;
+      inserted = false;
+      var cur_item;
+      while ( (cur_pos < tab_list.length) && (inserted == false) ) {
+        cur_item = tab_list[cur_pos];
+        if (tab.index < cur_item.index) {
+          //insert tab into cur_pos of tab_list
+          tab_list.splice(cur_pos, 0, tab);
+          inserted = true;
+        }
+        cur_pos += 1;
       }
-      else {
-        //console.log("Different window", tab.window);
+      if (! inserted) {
+        // add it to the end
+        tab_list.splice(cur_pos, 0, tab)
       }
+        
     }
 
     for (let tab of tab_list) {
       tab_text += tab.url + '\n';
       tab_text += tab.title + '\n';
-    }
-    
+    }    
     
     //https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/clipboard
     clipboard.set(tab_text);
