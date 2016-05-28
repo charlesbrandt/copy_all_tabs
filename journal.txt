@@ -1,3 +1,7 @@
+*2016.05.27 20:44:05
+this version adds buttons to the toolbar / action menu so that functionality can be accessible on a touch / mobile device. The context menu is not available on a touch device since there is no way to right click. 
+
+
 *2016.05.11 18:05:01
 http://two.com/
 Two.com
