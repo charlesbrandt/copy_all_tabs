@@ -12,3 +12,5 @@ syntax: glob
 .Spotlight-V100*
 .fseventsd*
 *.xpi
+firefox-web_extension-first_draft
+firefox-web_extension-temp

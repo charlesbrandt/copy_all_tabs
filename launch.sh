@@ -36,5 +36,8 @@ https://addons.mozilla.org/en-US/firefox/users/login?to=%2Fen-US%2Ffirefox%2Fadd
 
 for more notes, see extensions documentation
 
+launch.py -c $ROOT code
+
+
 "
 
