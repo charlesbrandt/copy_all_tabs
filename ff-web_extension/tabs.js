@@ -1,3 +1,5 @@
+var prefs = {};
+
 function firstUnpinnedTab(tabs) {
   for (var tab of tabs) {
     if (!tab.pinned) {
@@ -50,8 +52,10 @@ document.addEventListener("click", (e) => {
       for (var tab of tabs) {
 	tab_list += tab.url;
 	tab_list += "\n";
-	tab_list += tab.title || tab.id;
-	tab_list += "\n";
+	if (!prefs.noTitles) {
+		tab_list += tab.title || tab.id;
+		tab_list += "\n";
+	}
       }
       callOnActiveTab((tab, tabs) => {
 	browser.tabs.sendMessage(tab.id, {"content": tab_list});
@@ -94,4 +98,16 @@ function notify(message) {
   browser.tabs.create({url: message.url});
 }
 
-browser.tabs.executeScript({file: "/content_scripts/copy-paste.js"});
+function onError(error) {
+  console.log(`Error: ${error}`);
+}
+
+function onGot(item) {
+  if (item.noTitles) {
+    prefs.noTitles = item.noTitles;
+  }
+  browser.tabs.executeScript({file: "/content_scripts/copy-paste.js"});
+}
+
+var getting = browser.storage.local.get("noTitles");
+getting.then(onGot, onError);

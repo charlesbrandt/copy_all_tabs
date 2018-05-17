@@ -4,12 +4,16 @@
     "96": "icons/icon-bw.svg"	
   },
   "permissions": [
-    "<all_urls>",
+	"storage",
+	"<all_urls>",
     "tabs",
     "contextMenus",
     "clipboardWrite",
     "clipboardRead"	
   ],
+  "options_ui": {
+    "page": "options.html"
+  },
   "background": {
       "scripts": ["background.js"]
   },
