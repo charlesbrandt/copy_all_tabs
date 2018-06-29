@@ -134,9 +134,14 @@ document.addEventListener('click', (e) => {
           tab_list = add_separator(tab_list)
 	}
       }
+      browser.runtime.sendMessage({'content': tab_list})
+      
+      /*
+      // old way of sending message to the content script
       callOnActiveTab((tab, tabs) => {
 	browser.tabs.sendMessage(tab.id, {'content': tab_list})
       })
+      */
       //console.log(tab_list)
       document.querySelector('#message').innerHTML = 'Copied ' + tabs.length + ' tabs'
     })
@@ -144,9 +149,12 @@ document.addEventListener('click', (e) => {
   }
   
   else if (e.target.id === 'tabs-paste') {
+    browser.runtime.sendMessage({'action': 'paste'})
+    /*
     callOnActiveTab((tab, tabs) => {
       browser.tabs.sendMessage(tab.id, {'action': 'paste'})
     })
+    */
   }
 
   else if (e.target.id === 'open-options') {
@@ -193,10 +201,12 @@ function onGot(item) {
   if (item.separator) {
     prefs.separator = item.separator
   }
-  
+
+  /*
   browser.tabs.executeScript({
     file: '/content_scripts/copy-paste.js'
   })
+  */
 }
 
 var getting = browser.storage.local.get()

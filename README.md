@@ -37,3 +37,4 @@ Functionality in the old version was available via the context menu. Right-click
 
 ## Contributors
 
+Thanks [@refset](https://github.com/refset) for the start of the options / settings page. 
