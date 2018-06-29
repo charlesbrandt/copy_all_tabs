@@ -8,20 +8,35 @@
 
 <body>
   <div class="panel">
+
     <div class="panel-section panel-section-header">
-      <div class="text-section-header">Copy All Tabs</div>
+      <a href="#" class="action" id="tabs-paste">Paste Tabs</a><br>
+      <a href="#" class="action" id="tabs-copy">Copy Tabs</a><br>
     </div>
 
-    <a href="#" id="tabs-copy">Copy tabs</a><br>
-    <a href="#" id="tabs-paste">Paste tabs</a><br>
+    <div class="current-tab">
+        
+      <form>
+        <a href="#" class="arrow" id="tabs-move-beginning" title="Move tab first">«</a>
+      
+        <label>Tab</label>
+        <input type="input" id="position" size="2"/>      
+        <span id="window_total"></span>
+        <a href="#" id="update">Update</a>
+        
+        <a href="#" class="arrow" id="tabs-move-end" title="Move tab last">»</a>
+      </form>
+      
+    </div>
 
     <div class="panel-section-separator"></div>
 
-    <a href="#" id="tabs-move-beginning">Move tab first</a><br>
-    <a href="#" id="tabs-move-end">Move tab last</a><br>
 
-    <a href="#" id="tabs-duplicate">Duplicate Current Tab</a><br>
-    
+    <div class="details">
+      <a href="#" id="open-options" title="Settings"><img id="open-options" src="images/settings.svg"></a>
+      <div class="copy-all-tabs">Copy All Tabs <span id="total"></span></div>
+    </div>
+    <div id="message"></div>
 
   </div>
 
