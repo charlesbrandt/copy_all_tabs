@@ -1,3 +1,63 @@
+*2018.06.28 17:08:49
+https://www.google.com/search?q=firefox+web+extension+mobile&ie=utf-8&oe=utf-8&client=firefox-b-1-ab
+firefox web extension mobile - Google Search
+https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Differences_between_desktop_and_Android
+Differences between desktop and Android extensions - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/page_action
+page_action - Mozilla | MDN
+https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Developing_WebExtensions_for_Firefox_for_Android
+Developing extensions for Firefox for Android - Mozilla | MDN
+https://github.com/charlesbrandt/copy_all_tabs/issues/6
+Why does it need permission to 'Access your data for all websites'? · Issue #6 · charlesbrandt/copy_all_tabs · GitHub
+
+
+*2018.06.28 17:08:30 
+
+    "<all_urls>",
+    "contextMenus",
+
+*2018.06.28
+thought about updating regular expression to allow pasting file:///
+but mozilla won't allow web extensions to open tabs for these (for security)
+so it's moot
+
+https://www.google.com/search?client=firefox-b-1-ab&ei=yWMyW_O7DKnGjwTv1ruQCQ&q=regular+expression+local+file%3A%2F%2F+url&oq=regular+expression+local+file%3A%2F%2F+url&gs_l=psy-ab.3...51637.52573.0.52903.6.6.0.0.0.0.128.641.1j5.6.0....0...1..64.psy-ab..0.0.0....0.d1KQMH0zGzk
+regular expression local file:// url - Google Search
+http://regexlib.com/Search.aspx?k=url&AspxAutoDetectCookieSupport=1
+Regular Expression Library
+https://mathiasbynens.be/demo/url-regex
+In search of the perfect URL validation regex
+https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+javascript - What is a good regular expression to match a URL? - Stack Overflow
+https://stackoverflow.com/questions/161738/what-is-the-best-regular-expression-to-check-if-a-string-is-a-valid-url
+regex - What is the best regular expression to check if a string is a valid URL? - Stack Overflow
+
+
+*2018.06.28
+from tabs.html:
+
+    <a href="#" id="tabs-duplicate">Duplicate Current Tab</a><br>
+
+I hardly ever use this function. For times that it would help, it's easy enough to open a new tab and copy/paste the current tab address.
+
+Leaving the javascript code in place.
+
+*2018.06.26 complete
+requested [2016.01.03 08:31:54]
+chrome/chromium version using same approach
+
+*2018.06.26 complete
+this was added by
+https://github.com/refset/copy_all_tabs
+thanks!
+requested [2016.01.03 08:32:10]
+configuration page for output format
+
+*2018.06.26 complete
+Web Extension format (2017.11.27) requires this approach
+requested [2016.01.03 08:32:19]
+maybe a button to show at top of browser to gain access to functionality
+
 *2017.11.23 08:35:58
 this requires the "matches" parameter:
 
