@@ -1,19 +1,24 @@
+*2017.12.03 07:40:40
+show message that links have been copied successfully
+
+*2017.11.29 17:58:29
+better visual interface to pop up
+
+*2017.11.29 17:59:13
+research paste functionality (don't use this as much, personally)
+
+*2017.11.29 17:59:59
+move tab to position (ala sortable_list)
+
+*2017.11.29 17:58:37
+move tab count to pop-up view (don't need on badge)
+
+*2017.11.29 17:58:52
+make duplicate tab function work
+
 *2016.01.03 08:31:54
 chrome/chromium version using same approach
 
 *2016.01.03 08:32:10
 configuration page for output format
 
-*2016.01.03 08:32:19
-maybe a button to show at top of browser to gain access to functionality
-
-*2016.01.03 19:15:04
-cd /c/public/copy_all_tabs 
-/c/public/templates/scripts/cleanup_temp_files.sh
-cd firefox
-jpm xpi
-mv @copyalltabs-0.0.3.xpi ../
-
-to test it:
-jpm run
-jpm run -b /usr/bin/firefox

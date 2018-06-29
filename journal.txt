@@ -1,3 +1,20 @@
+*2017.11.29 17:57:08 complete
+this process is no longer up-to-date
+requested [2016.01.03 19:15:04]
+cd /c/public/copy_all_tabs 
+/c/public/templates/scripts/cleanup_temp_files.sh
+cd firefox
+jpm xpi
+mv @copyalltabs-0.0.3.xpi ../
+
+to test it:
+jpm run
+jpm run -b /usr/bin/firefox
+
+*2017.11.29 17:56:55 complete
+requested [2016.01.03 08:32:19]
+maybe a button to show at top of browser to gain access to functionality
+
 *2017.11.23 08:35:58
 this requires the "matches" parameter:
 
