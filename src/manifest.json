@@ -10,8 +10,8 @@
     "clipboardWrite",
     "clipboardRead"
   ],
-  "options_ui": {
-    "page": "options.html"
+  "settings_ui": {
+    "page": "settings.html"
   },
   "background": {
     "scripts": ["background.js"]

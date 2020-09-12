@@ -144,9 +144,9 @@ document.addEventListener("click", (e) => {
       browser.tabs.sendMessage(tab.id, {'action': 'paste'})
     })
     */
-  } else if (e.target.id === "open-options") {
-    console.log("Open Options called");
-    browser.tabs.create({ url: "options.html" });
+  } else if (e.target.id === "open-settings") {
+    console.log("Open Settings called");
+    browser.tabs.create({ url: "settings.html" });
   }
 
   e.preventDefault();

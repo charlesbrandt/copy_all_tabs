@@ -1,4 +1,4 @@
-function loadOptions() {
+function loadSettings() {
   browser.storage.local.get().then((res) => {
     (document.querySelector("#without-titles").checked = res.noTitles),
       (document.querySelector("#show-badge").checked = res.showBadge),
@@ -6,7 +6,7 @@ function loadOptions() {
   });
 }
 
-function updateOptions(e) {
+function updateSettings(e) {
   browser.storage.local.set({
     noTitles: document.querySelector("#without-titles").checked,
     showBadge: document.querySelector("#show-badge").checked,
@@ -21,5 +21,5 @@ function updateOptions(e) {
   e.preventDefault();
 }
 
-document.addEventListener("DOMContentLoaded", loadOptions);
-document.querySelector("form").addEventListener("submit", updateOptions);
+document.addEventListener("DOMContentLoaded", loadSettings);
+document.querySelector("form").addEventListener("submit", updateSettings);
