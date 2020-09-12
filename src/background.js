@@ -1,4 +1,4 @@
-browser.browserAction.setIcon({path: "icons/icon-bw.svg"});
+browser.browserAction.setIcon({ path: "icons/icon-bw.svg" });
 
 function updateCount(tabId, isOnRemoved) {
   browser.storage.local.get().then((res) => {
@@ -6,29 +6,37 @@ function updateCount(tabId, isOnRemoved) {
     if (show) {
       browser.tabs.query({}).then((tabs) => {
         let length = tabs.length;
-        
+
         // onRemoved fires too early and the count is one too many.
         // see https://bugzilla.mozilla.org/show_bug.cgi?id=1396758
-        if (isOnRemoved && tabId && tabs.map((t) => { return t.id; }).includes(tabId)) {
+        if (
+          isOnRemoved &&
+          tabId &&
+          tabs
+            .map((t) => {
+              return t.id;
+            })
+            .includes(tabId)
+        ) {
           length--;
         }
-          
-        browser.browserAction.setBadgeText({text: length.toString()});
+
+        browser.browserAction.setBadgeText({ text: length.toString() });
         if (length > 2) {
-          browser.browserAction.setBadgeBackgroundColor({'color': 'green'});
+          browser.browserAction.setBadgeBackgroundColor({ color: "green" });
         } else {
-          browser.browserAction.setBadgeBackgroundColor({'color': 'red'});
+          browser.browserAction.setBadgeBackgroundColor({ color: "red" });
         }
       });
-    };
+    }
   });
 }
 
-browser.tabs.onRemoved.addListener(
-  (tabId) => { updateCount(tabId, true);
+browser.tabs.onRemoved.addListener((tabId) => {
+  updateCount(tabId, true);
 });
-browser.tabs.onCreated.addListener(
-  (tabId) => { updateCount(tabId, false);
+browser.tabs.onCreated.addListener((tabId) => {
+  updateCount(tabId, false);
 });
 updateCount();
 
@@ -49,88 +57,104 @@ function handleMessage(message, time) {
     // these show up in the console for the background page console (debug)
     //console.log("made it here");
     //console.log(message.content);
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let done = false;
-      function onPaste(event) { try {
-	//console.log("onPaste called:", event);
-	if (done) { return; } done = true;
-	document.removeEventListener('paste', onPaste);
-	//https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData
-	const transfer = event.clipboardData;
-	var contents = transfer.getData("text");
+      function onPaste(event) {
+        try {
+          //console.log("onPaste called:", event);
+          if (done) {
+            return;
+          }
+          done = true;
+          document.removeEventListener("paste", onPaste);
+          //https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData
+          const transfer = event.clipboardData;
+          var contents = transfer.getData("text");
 
-	var expression = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i;
+          var expression = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i;
 
-	var regex = new RegExp(expression);
-	
-	var lines = contents.split(/\r?\n/);
-	// go through each line and 1) look for urls 2) get rid of dupes
-	var links = [];
-	for (let line of lines) {
-	  if (line.match(regex)) {
-	    //sometimes the url and the title is the same...
-	    //don't want to open multiple instance of the same url
-	    //check for and ignore duplicates
-	    if (links.indexOf(line) == -1) {
-              links.push(line);
-	    }
-	    // else {
-            //   console.log("Skipping dupe:", line);
-	    // }
-	  }
-	  // else {
-	  //   console.log("DIDN't match", line);
-	  // }
-	}
-	
-	for (let link of links) {
-	  // console.log("Opening new tab: ", link);
+          var regex = new RegExp(expression);
 
-	  // can't do this in a content script:
-	  //browser.tabs.create({url: link});
-	  //tabs.open(link);
+          var lines = contents.split(/\r?\n/);
+          // go through each line and 1) look for urls 2) get rid of dupes
+          var links = [];
+          for (let line of lines) {
+            if (line.match(regex)) {
+              //sometimes the url and the title is the same...
+              //don't want to open multiple instance of the same url
+              //check for and ignore duplicates
+              if (links.indexOf(line) == -1) {
+                links.push(line);
+              }
+              // else {
+              //   console.log("Skipping dupe:", line);
+              // }
+            }
+            // else {
+            //   console.log("DIDN't match", line);
+            // }
+          }
 
-	  // send a message instead:
-	  browser.runtime.sendMessage({"url": link});
-	}
-	
-	
-	event.preventDefault();
-	resolve();
-      } catch (error) { reject(error); } }
+          for (let link of links) {
+            // console.log("Opening new tab: ", link);
+
+            // can't do this in a content script:
+            //browser.tabs.create({url: link});
+            //tabs.open(link);
+
+            // send a message instead:
+            browser.runtime.sendMessage({ url: link });
+          }
+
+          event.preventDefault();
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      }
       setTimeout(() => {
-	if (done) { return; } done = true;
-	document.removeEventListener('paste', onPaste);
-	reject(new Error('Timeout after '+ (time || 1000) +'ms'));
+        if (done) {
+          return;
+        }
+        done = true;
+        document.removeEventListener("paste", onPaste);
+        reject(new Error("Timeout after " + (time || 1000) + "ms"));
       }, time || 1000);
-      document.addEventListener('paste', onPaste);
-      document.execCommand('paste', false, null);
-    })
-  }
-
-  else {
+      document.addEventListener("paste", onPaste);
+      document.execCommand("paste", false, null);
+    });
+  } else {
     //handle copy
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let done = false;
-      function onCopy(event) { try {
-	if (done) { return; } done = true;
-	document.removeEventListener('copy', onCopy);
-	const transfer = event.clipboardData;
-	transfer.clearData();
-	transfer.setData('text/plain', message.content);
-	event.preventDefault();
-	resolve();
-      } catch (error) { reject(error); } }
+      function onCopy(event) {
+        try {
+          if (done) {
+            return;
+          }
+          done = true;
+          document.removeEventListener("copy", onCopy);
+          const transfer = event.clipboardData;
+          transfer.clearData();
+          transfer.setData("text/plain", message.content);
+          event.preventDefault();
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      }
       setTimeout(() => {
-	if (done) { return; } done = true;
-	document.removeEventListener('copy', onCopy);
-	reject(new Error('Timeout after '+ (time || 1000) +'ms'));
+        if (done) {
+          return;
+        }
+        done = true;
+        document.removeEventListener("copy", onCopy);
+        reject(new Error("Timeout after " + (time || 1000) + "ms"));
       }, time || 1000);
-      document.addEventListener('copy', onCopy);
-      document.execCommand('copy', false, null);
-    })
+      document.addEventListener("copy", onCopy);
+      document.execCommand("copy", false, null);
+    });
   }
-};
+}
 
 browser.runtime.onMessage.addListener(handleMessage);
-

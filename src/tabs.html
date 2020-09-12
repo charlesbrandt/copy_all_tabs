@@ -2,45 +2,49 @@
 
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="tabs.css"/>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="tabs.css" />
   </head>
 
-<body>
-  <div class="panel">
+  <body>
+    <div class="panel">
+      <div class="panel-section panel-section-header">
+        <a href="#" class="action" id="tabs-paste">Paste Tabs</a><br />
+        <a href="#" class="action" id="tabs-copy">Copy Tabs</a><br />
+      </div>
 
-    <div class="panel-section panel-section-header">
-      <a href="#" class="action" id="tabs-paste">Paste Tabs</a><br>
-      <a href="#" class="action" id="tabs-copy">Copy Tabs</a><br>
+      <div class="current-tab">
+        <form>
+          <a
+            href="#"
+            class="arrow"
+            id="tabs-move-beginning"
+            title="Move tab first"
+            >«</a
+          >
+
+          <label>Tab</label>
+          <input type="input" id="position" size="2" />
+          <span id="window_total"></span>
+          <a href="#" id="update">Update</a>
+
+          <a href="#" class="arrow" id="tabs-move-end" title="Move tab last"
+            >»</a
+          >
+        </form>
+      </div>
+
+      <div class="panel-section-separator"></div>
+
+      <div class="details">
+        <a href="#" id="open-options" title="Settings"
+          ><img id="open-options" src="images/settings.svg"
+        /></a>
+        <div class="copy-all-tabs">Copy All Tabs <span id="total"></span></div>
+      </div>
+      <div id="message"></div>
     </div>
 
-    <div class="current-tab">
-        
-      <form>
-        <a href="#" class="arrow" id="tabs-move-beginning" title="Move tab first">«</a>
-      
-        <label>Tab</label>
-        <input type="input" id="position" size="2"/>      
-        <span id="window_total"></span>
-        <a href="#" id="update">Update</a>
-        
-        <a href="#" class="arrow" id="tabs-move-end" title="Move tab last">»</a>
-      </form>
-      
-    </div>
-
-    <div class="panel-section-separator"></div>
-
-
-    <div class="details">
-      <a href="#" id="open-options" title="Settings"><img id="open-options" src="images/settings.svg"></a>
-      <div class="copy-all-tabs">Copy All Tabs <span id="total"></span></div>
-    </div>
-    <div id="message"></div>
-
-  </div>
-
-  <script src="tabs.js"></script>
-</body>
-
+    <script src="tabs.js"></script>
+  </body>
 </html>

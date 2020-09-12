@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   // width: 350px;
 }
 
@@ -47,14 +48,14 @@ a {
 }
 
 .details {
-    display: table;
-    // justify-content:center;
-    // align-content:center;
+  display: table;
+  // justify-content:center;
+  // align-content:center;
 }
 
 .copy-all-tabs {
-    display: table-cell;
-    vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #open-options {
@@ -62,4 +63,3 @@ a {
   height: 22px;
   float: right;
 }
-
