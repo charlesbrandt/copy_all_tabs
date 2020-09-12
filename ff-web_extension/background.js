@@ -74,20 +74,22 @@ function handleMessage(message, time) {
 	    if (links.indexOf(line) == -1) {
               links.push(line);
 	    }
-	    else {
-              console.log("Skipping dupe:", line);
-	    }
+	    // else {
+            //   console.log("Skipping dupe:", line);
+	    // }
 	  }
-	  else {
-	    console.log("DIDN't match", line);
-	  }
+	  // else {
+	  //   console.log("DIDN't match", line);
+	  // }
 	}
 	
 	for (let link of links) {
-	  //tabs.open(link);
-	  console.log("Opening new tab: ", link);
+	  // console.log("Opening new tab: ", link);
+
 	  // can't do this in a content script:
 	  //browser.tabs.create({url: link});
+	  //tabs.open(link);
+
 	  // send a message instead:
 	  browser.runtime.sendMessage({"url": link});
 	}
