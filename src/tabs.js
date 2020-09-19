@@ -1,4 +1,4 @@
-var prefs = {};
+var settings = {};
 
 function firstUnpinnedTab(tabs) {
   for (var tab of tabs) {
@@ -13,11 +13,11 @@ function getCurrentWindowTabs() {
 }
 
 function add_separator(content) {
-  //console.log('adding separator: ', prefs.separator)
-  if (!prefs.separator) {
+  //console.log('adding separator: ', settings.separator)
+  if (!settings.separator) {
     content += "\r\n";
   } else {
-    content += prefs.separator;
+    content += settings.separator;
   }
   return content;
 }
@@ -115,25 +115,26 @@ document.addEventListener("click", (e) => {
     });
   } else if (e.target.id === "tabs-copy") {
     getCurrentWindowTabs().then((tabs) => {
-      var tab_list = "";
+      var tabList = "";
       for (var tab of tabs) {
-        tab_list += tab.url;
-        tab_list = add_separator(tab_list);
-        if (!prefs.noTitles) {
-          tab_list += tab.title || tab.id;
-          //tab_list += '\n'
-          tab_list = add_separator(tab_list);
+        tabList += tab.url;
+        tabList = add_separator(tabList);
+        if (!settings.noTitles) {
+          // tabList += tab.title || tab.id;
+          tabList += tab.title;
+          //tabList += '\n'
+          tabList = add_separator(tabList);
         }
       }
-      browser.runtime.sendMessage({ content: tab_list });
+      browser.runtime.sendMessage({ content: tabList });
 
       /*
       // old way of sending message to the content script
       callOnActiveTab((tab, tabs) => {
-	browser.tabs.sendMessage(tab.id, {'content': tab_list})
+	browser.tabs.sendMessage(tab.id, {'content': tabList})
       })
       */
-      //console.log(tab_list)
+      //console.log(tabList)
       document.querySelector("#message").innerHTML =
         "Copied " + tabs.length + " tabs";
     });
@@ -183,10 +184,10 @@ function onError(error) {
 function onGot(item) {
   //console.log('item: ', item)
   if (item.noTitles) {
-    prefs.noTitles = item.noTitles;
+    settings.noTitles = item.noTitles;
   }
   if (item.separator) {
-    prefs.separator = item.separator;
+    settings.separator = item.separator;
   }
 
   /*
