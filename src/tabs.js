@@ -22,6 +22,12 @@ function add_separator(content) {
   return content;
 }
 
+function convertTabToListItem(tab) {
+  // TODO: way to specify the format and utilize it in the loop
+  // let tabFormat = "${tab.url}\r\n${tab.title}\r\n";
+  return `${tab.url}\r\n${tab.title}\r\n`;
+}
+
 function callOnActiveTab(callback) {
   getCurrentWindowTabs().then((tabs) => {
     for (var tab of tabs) {
@@ -115,16 +121,9 @@ document.addEventListener("click", (e) => {
     });
   } else if (e.target.id === "tabs-copy") {
     getCurrentWindowTabs().then((tabs) => {
-      var tabList = "";
+      let tabList = "";
       for (var tab of tabs) {
-        tabList += tab.url;
-        tabList = add_separator(tabList);
-        if (!settings.noTitles) {
-          // tabList += tab.title || tab.id;
-          tabList += tab.title;
-          //tabList += '\n'
-          tabList = add_separator(tabList);
-        }
+        tabList += convertTabToListItem(tab);
       }
       browser.runtime.sendMessage({ content: tabList });
 
