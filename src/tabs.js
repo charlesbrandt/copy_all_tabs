@@ -22,10 +22,22 @@ function add_separator(content) {
   return content;
 }
 
-function convertTabToListItem(tab) {
-  // TODO: way to specify the format and utilize it in the loop
-  // let tabFormat = "${tab.url}\r\n${tab.title}\r\n";
-  return `${tab.url}\r\n${tab.title}\r\n`;
+/**
+ * Convert the incoming tab object provided by the mozilla extension api
+ * to a tab list item
+ *
+ * @param {*} tab
+ * @param {*} format
+ *
+ * [CAUTION]
+ * We attempted to convert strings to template strings
+ * using both "`" and eval which result in an error:
+ * Content Security Policy: The page’s settings blocked the loading of a resource at eval (“script-src”).
+ */
+function convertTabToListItem(tab, format = "${tab.url}\r\n${tab.title}\r\n") {
+  format = format.replace("${tab.url}", tab.url);
+  const tabListItem = format.replace("${tab.title}", tab.title);
+  return tabListItem;
 }
 
 function callOnActiveTab(callback) {
@@ -123,7 +135,8 @@ document.addEventListener("click", (e) => {
     getCurrentWindowTabs().then((tabs) => {
       let tabList = "";
       for (var tab of tabs) {
-        tabList += convertTabToListItem(tab);
+        const format = "${tab.url}  \r\n${tab.title}  \r\n";
+        tabList += convertTabToListItem(tab, format);
       }
       browser.runtime.sendMessage({ content: tabList });
 
