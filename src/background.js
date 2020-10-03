@@ -1,6 +1,6 @@
 browser.browserAction.setIcon({ path: "icons/icon-bw.svg" });
 
-function updateCount(tabId, isOnRemoved) {
+function updateTabCount(tabId, isOnRemoved) {
   browser.storage.local.get().then((res) => {
     let show = res.showBadge;
     if (show) {
@@ -33,12 +33,12 @@ function updateCount(tabId, isOnRemoved) {
 }
 
 browser.tabs.onRemoved.addListener((tabId) => {
-  updateCount(tabId, true);
+  updateTabCount(tabId, true);
 });
 browser.tabs.onCreated.addListener((tabId) => {
-  updateCount(tabId, false);
+  updateTabCount(tabId, false);
 });
-updateCount();
+updateTabCount();
 
 /**
  * Attempts to write data to the users clipboard.
