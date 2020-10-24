@@ -1,6 +1,6 @@
 function loadSettings() {
   browser.storage.local.get().then((res) => {
-    (document.querySelector("#without-titles").checked = res.noTitles),
+    (document.querySelector("#show-badge").checked = res.showBadge),
       (document.querySelector("#show-badge").checked = res.showBadge),
       (document.querySelector("#separator").value = res.separator);
   });
@@ -8,7 +8,7 @@ function loadSettings() {
 
 function updateSettings(e) {
   browser.storage.local.set({
-    noTitles: document.querySelector("#without-titles").checked,
+  browser.storage.sync.set({
     showBadge: document.querySelector("#show-badge").checked,
     separator: document.querySelector("#separator").value,
   });
