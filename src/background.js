@@ -22,11 +22,7 @@ function updateTabCount(tabId, isOnRemoved) {
         }
 
         browser.browserAction.setBadgeText({ text: length.toString() });
-        if (length > 2) {
-          browser.browserAction.setBadgeBackgroundColor({ color: "green" });
-        } else {
-          browser.browserAction.setBadgeBackgroundColor({ color: "red" });
-        }
+        browser.browserAction.setBadgeBackgroundColor({ color: "green" });
       });
     }
   });
