@@ -195,9 +195,6 @@ function onError(error) {
 
 function onGot(item) {
   //console.log('item: ', item)
-  if (item.noTitles) {
-    settings.noTitles = item.noTitles;
-  }
   if (item.separator) {
     settings.separator = item.separator;
   }
