@@ -209,5 +209,5 @@ function onGot(item) {
   */
 }
 
-var getting = browser.storage.local.get();
+var getting = browser.storage.sync.get();
 getting.then(onGot, onError);

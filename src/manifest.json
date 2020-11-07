@@ -21,6 +21,11 @@
     "default_title": "Copy All Tabs",
     "default_popup": "tabs.html"
   },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{be4403d2-87d9-49af-9eb4-896c351b5788}"
+    }
+  },
   "web_accessible_resources": ["images/settings.svg"],
   "manifest_version": 2,
   "name": "Copy All Tabs",

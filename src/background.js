@@ -1,7 +1,7 @@
 browser.browserAction.setIcon({ path: "icons/icon-bw.svg" });
 
 function updateTabCount(tabId, isOnRemoved) {
-  browser.storage.local.get().then((res) => {
+  browser.storage.sync.get().then((res) => {
     let show = res.showBadge;
     if (show) {
       browser.tabs.query({}).then((tabs) => {
