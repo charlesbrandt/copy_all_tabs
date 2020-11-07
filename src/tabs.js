@@ -12,12 +12,12 @@ function getCurrentWindowTabs() {
   return browser.tabs.query({ currentWindow: true });
 }
 
-function add_separator(content) {
-  //console.log('adding separator: ', settings.separator)
-  if (!settings.separator) {
+function add_outputFormat(content) {
+  //console.log('adding outputFormat: ', settings.outputFormat)
+  if (!settings.outputFormat) {
     content += "\r\n";
   } else {
-    content += settings.separator;
+    content += settings.outputFormat;
   }
   return content;
 }
@@ -195,8 +195,8 @@ function onError(error) {
 
 function onGot(item) {
   //console.log('item: ', item)
-  if (item.separator) {
-    settings.separator = item.separator;
+  if (item.outputFormat) {
+    settings.outputFormat = item.outputFormat;
   }
 
   /*
