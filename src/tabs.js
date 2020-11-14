@@ -12,15 +12,15 @@ function getCurrentWindowTabs() {
   return browser.tabs.query({ currentWindow: true });
 }
 
-function add_outputFormat(content) {
-  //console.log('adding outputFormat: ', settings.outputFormat)
-  if (!settings.outputFormat) {
-    content += "\r\n";
-  } else {
-    content += settings.outputFormat;
-  }
-  return content;
-}
+// function addOutputFormat(content) {
+//   //console.log('adding outputFormat: ', settings.outputFormat)
+//   if (!settings.outputFormat) {
+//     content += "\r\n";
+//   } else {
+//     content += settings.outputFormat;
+//   }
+//   return content;
+// }
 
 /**
  * Convert the incoming tab object provided by the mozilla extension api
