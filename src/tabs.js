@@ -132,24 +132,7 @@ document.addEventListener("click", (e) => {
       updatePosition();
     });
   } else if (e.target.id === "tabs-copy") {
-    getCurrentWindowTabs().then((tabs) => {
-      let tabList = "";
-      for (var tab of tabs) {
-        const format = "${tab.url}  \r\n${tab.title}  \r\n";
-        tabList += convertTabToListItem(tab, format);
-      }
-      browser.runtime.sendMessage({ content: tabList });
-
-      /*
-      // old way of sending message to the content script
-      callOnActiveTab((tab, tabs) => {
-	browser.tabs.sendMessage(tab.id, {'content': tabList})
-      })
-      */
-      //console.log(tabList)
-      document.querySelector("#message").innerHTML =
-        "Copied " + tabs.length + " tabs";
-    });
+    copyTabs();
   } else if (e.target.id === "tabs-paste") {
     browser.runtime.sendMessage({ action: "paste" });
     /*
@@ -208,3 +191,24 @@ function onGot(item) {
 
 var getting = browser.storage.sync.get();
 getting.then(onGot, onError);
+
+/**
+ * Applies output format to every tab and copies resultant tab list to clipboard 
+ */
+function copyTabs() {
+  getCurrentWindowTabs().then((tabs) => {
+    let tabList = "";
+
+    browser.storage.sync.get('outputFormat').then(res => {
+      const outputFormat = res.outputFormat;
+
+      for (var tab of tabs) {
+        tabList += convertTabToListItem(tab, outputFormat);
+      }
+      browser.runtime.sendMessage({ content: tabList });
+
+      document.querySelector("#message").innerHTML =
+        "Copied " + tabs.length + " tabs";
+    })
+  });
+}

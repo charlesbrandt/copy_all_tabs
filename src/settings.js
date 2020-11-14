@@ -1,7 +1,8 @@
+// TODO: updateSettingsForm, updateSettingsStorage, loadSettings as bare storage retrieval 
 function loadSettings() {
   browser.storage.sync.get().then((res) => {
-    console.log("Storage sync outputformat:", res.outputFormat);
     res.outputFormat = res.outputFormat || "${tab.url}\r\n${tab.title}\r\n";
+    console.log("Storage sync outputformat:", res.outputFormat);
     document.querySelector("#show-badge").checked = res.showBadge;
     document.querySelector("#output-format").value = res.outputFormat;
   });
