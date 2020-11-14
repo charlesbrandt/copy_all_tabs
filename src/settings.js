@@ -1,7 +1,9 @@
 function loadSettings() {
   browser.storage.sync.get().then((res) => {
-    (document.querySelector("#show-badge").checked = res.showBadge),
-      (document.querySelector("#output-format").value = res.outputFormat);
+    console.log("Storage sync outputformat:", res.outputFormat);
+    res.outputFormat = res.outputFormat || "${tab.url}\r\n${tab.title}\r\n";
+    document.querySelector("#show-badge").checked = res.showBadge;
+    document.querySelector("#output-format").value = res.outputFormat;
   });
 }
 
