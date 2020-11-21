@@ -1,5 +1,3 @@
-var settings = {};
-
 function firstUnpinnedTab(tabs) {
   for (var tab of tabs) {
     if (!tab.pinned) {
@@ -11,16 +9,6 @@ function firstUnpinnedTab(tabs) {
 function getCurrentWindowTabs() {
   return browser.tabs.query({ currentWindow: true });
 }
-
-// function addOutputFormat(content) {
-//   //console.log('adding outputFormat: ', settings.outputFormat)
-//   if (!settings.outputFormat) {
-//     content += "\r\n";
-//   } else {
-//     content += settings.outputFormat;
-//   }
-//   return content;
-// }
 
 /**
  * Convert the incoming tab object provided by the mozilla extension api
@@ -171,26 +159,6 @@ browser.runtime.onMessage.addListener(notify);
 function notify(message) {
   browser.tabs.create({ url: message.url });
 }
-
-function onError(error) {
-  console.log(`Error: ${error}`);
-}
-
-function onGot(item) {
-  //console.log('item: ', item)
-  if (item.outputFormat) {
-    settings.outputFormat = item.outputFormat;
-  }
-
-  /*
-  browser.tabs.executeScript({
-    file: '/content_scripts/copy-paste.js'
-  })
-  */
-}
-
-var getting = browser.storage.sync.get();
-getting.then(onGot, onError);
 
 /**
  * Applies output format to every tab and copies resultant tab list to clipboard 
