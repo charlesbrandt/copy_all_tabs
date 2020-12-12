@@ -64,13 +64,13 @@ document.addEventListener("submit", (e) => {
   getCurrentWindowTabs().then((tabs) => {
     // doesn't make it here...
     // is the interface window being closed when form is submitted?
-    console.log("got current window tabs");
+    // console.log("got current window tabs");
     for (var tab of tabs) {
       if (tab.active) {
         //console.log('Active Tab, calling callback', tab)
-        console.log("inside callOnActiveTab");
+        // console.log("inside callOnActiveTab");
         index = document.querySelector("#position").value - 1;
-        console.log("destination: ", index);
+        // console.log("destination: ", index);
         browser.tabs.move([tab.id], { index });
         updatePosition();
       }
@@ -98,14 +98,14 @@ document.addEventListener("click", (e) => {
       if (!tab.pinned) {
         index = firstUnpinnedTab(tabs);
       }
-      console.log(`moving ${tab.id} to ${index}`);
+      // console.log(`moving ${tab.id} to ${index}`);
       browser.tabs.move([tab.id], { index });
       updatePosition();
     });
   } else if (e.target.id === "update") {
     callOnActiveTab((tab, tabs) => {
       index = document.querySelector("#position").value - 1;
-      //console.log('destination: ', index)
+      // console.log('destination: ', index)
       browser.tabs.move([tab.id], { index });
       updatePosition();
     });
@@ -129,7 +129,7 @@ document.addEventListener("click", (e) => {
     })
     */
   } else if (e.target.id === "open-settings") {
-    console.log("Open Settings called");
+    // console.log("Open Settings called");
     browser.tabs.create({ url: "settings.html" });
   }
 
@@ -138,7 +138,7 @@ document.addEventListener("click", (e) => {
 
 //onRemoved listener. fired when tab is removed
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
-  console.log(`The tab with id: ${tabId}, is closing`);
+  // console.log(`The tab with id: ${tabId}, is closing`);
 
   if (removeInfo.isWindowClosing) {
     // console.log(`Its window is also closing.`)
@@ -161,13 +161,13 @@ function notify(message) {
 }
 
 /**
- * Applies output format to every tab and copies resultant tab list to clipboard 
+ * Applies output format to every tab and copies resultant tab list to clipboard
  */
 function copyTabs() {
   getCurrentWindowTabs().then((tabs) => {
     let tabList = "";
 
-    browser.storage.sync.get('outputFormat').then(res => {
+    browser.storage.sync.get("outputFormat").then((res) => {
       const outputFormat = res.outputFormat;
 
       for (var tab of tabs) {
@@ -177,6 +177,6 @@ function copyTabs() {
 
       document.querySelector("#message").innerHTML =
         "Copied " + tabs.length + " tabs";
-    })
+    });
   });
 }

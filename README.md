@@ -13,10 +13,9 @@ https://chrome.google.com/webstore/detail/copy-all-urls/djdmadneanknadilpjiknlna
 
 Pull requests are welcome!
 
-
 ## Development Process
 
-Documentation for creating an extension has improved over the years. 
+Documentation for creating an extension has improved over the years.
 
 https://extensionworkshop.com/
 
@@ -30,7 +29,7 @@ https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtensio
 
 ### Installing
 
-Open "about:debugging" in Firefox, click "This Firefox", click "Load Temporary Add-on" and select any file in your extension's directory 
+Open "about:debugging" in Firefox, click "This Firefox", click "Load Temporary Add-on" and select any file in your extension's directory
 
 When getting started with a custom extension manifest.json, I received:
 
@@ -40,8 +39,7 @@ Check that the manifest.json is valid. In my case, I wasn't providing all parame
 
 Click Inspect -> Console to see logging output
 
-Reminder: Actions taken on Firefox `about:*` pages will not have any console output. Test with other tabs. 
-
+Reminder: Actions taken on Firefox `about:*` pages will not have any console output. Test with other tabs.
 
 #### Web-ext
 
@@ -49,31 +47,36 @@ An alternative way to run an extension for development
 
     npm install --global web-ext
 
-For notes on using web-ext (but remember, 
+For notes on using web-ext (but remember,
 
 https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext
 
 I find loading in "about:debugging" is sufficient and easier
 
-
 ### Permissions
 
 https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Clipboard_access
 
-
 ### Publishing
 
-    cd copy_all_tabs/ff-web_extension 
-    zip -r -FS ../copy-all-tabs.zip *
+Remember to:
 
-Log in and publish zip file. 
+- comment out any console statements added during development before zipping up.
+- increment the version number in `manifest.json`
 
+  cd copy_all_tabs/src
+  zip -r -FS ../copy-all-tabs.zip \*
+
+Log in and publish zip file.
 
 ## History
 
-This add-on is inspired by old add-on called CopyAllUrls (http://www.plasser.net/copyallurls/). I used that add-on for many years with Firefox (Thank you, Jürgen!). 
+0.0.9
+Version 0.0.9 provides a custom output setting in the settings panel to customize the way tab links are copied to the clipboard.
 
-The current version has been updated to use the Web Extension API. 
+This add-on is inspired by old add-on called CopyAllUrls (http://www.plasser.net/copyallurls/). I used that add-on for many years with Firefox (Thank you, Jürgen!).
+
+The current version has been updated to use the Web Extension API.
 https://developer.mozilla.org/en-US/Add-ons/WebExtensions
 
 It is loosely based on the structure of the example "tabs, tabs, tabs" extension.
@@ -82,10 +85,9 @@ https://github.com/mdn/webextensions-examples/
 Previous versions used Firefox's Add-ons SDK:
 https://developer.mozilla.org/en-US/Add-ons/SDK
 
-Functionality in the old version was available via the context menu. Right-click on a page to find "Copy Tabs" and "Paste Tabs". 
-
+Functionality in the old version was available via the context menu. Right-click on a page to find "Copy Tabs" and "Paste Tabs".
 
 ## Alternatives
 
 https://addons.mozilla.org/en-US/firefox/addon/foxytab/?src=featured
-Not open source? 
+Not open source?

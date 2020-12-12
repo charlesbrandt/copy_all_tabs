@@ -23,13 +23,13 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{be4403d2-87d9-49af-9eb4-896c351b5788}"
+      "id": "@copyalltabs"
     }
   },
   "web_accessible_resources": ["images/settings.svg"],
   "manifest_version": 2,
   "name": "Copy All Tabs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Copy All Tabs is a Firefox Add-on that takes the address and title for each tab and creates a text list of links. The list is copied to your clipboard so you can paste it to notes. You can also open tabs from a previously saved list of links.",
   "homepage_url": "https://github.com/charlesbrandt/copy_all_tabs"
 }
