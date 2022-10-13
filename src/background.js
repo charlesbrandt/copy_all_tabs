@@ -67,15 +67,20 @@ function handleMessage(message, time) {
           const transfer = event.clipboardData;
           var contents = transfer.getData("text");
 
-          var expression = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i;
-
-          var regex = new RegExp(expression);
+          function isUrlValid(string) {
+            try {
+              new URL(string);
+              return true;
+            } catch (typeError) {
+              return false;
+            }
+          }
 
           var lines = contents.split(/\r?\n/);
           // go through each line and 1) look for urls 2) get rid of dupes
           var links = [];
           for (let line of lines) {
-            if (line.match(regex)) {
+            if (isUrlValid(line)) {
               //sometimes the url and the title is the same...
               //don't want to open multiple instance of the same url
               //check for and ignore duplicates
