@@ -52,10 +52,8 @@ Remember to:
 - comment out any console statements added during development before zipping up.
 
 - increment the version number in `manifest.json`
-- commit changes and add a tag in git repo
-```
-git tag -a 0.0.10 -m 'version 0.0.10'  
-```
+- commit changes 
+
 - bundle and deploy
 ```
 cd copy_all_tabs/src
@@ -63,6 +61,14 @@ zip -r -FS ../copy-all-tabs.zip *
 ```
 
 Log in and publish zip file.
+
+add a tag in git repo
+```
+git tag -a 0.0.10 -m 'version 0.0.10'  
+git push origin 0.0.10
+```
+
+
 
 ## History
 
