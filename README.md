@@ -41,18 +41,6 @@ Click Inspect -> Console to see logging output
 
 Reminder: Actions taken on Firefox `about:*` pages will not have any console output. Test with other tabs.
 
-#### Web-ext
-
-An alternative way to run an extension for development
-
-    npm install --global web-ext
-
-For notes on using web-ext (but remember,
-
-https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext
-
-I find loading in "about:debugging" is sufficient and easier
-
 ### Permissions
 
 https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Clipboard_access
@@ -63,13 +51,22 @@ Remember to:
 
 - comment out any console statements added during development before zipping up.
 - increment the version number in `manifest.json`
-
-  cd copy_all_tabs/src
-  zip -r -FS ../copy-all-tabs.zip \*
+- commit changes and add a tag in git repo
+```
+git tag -a 0.0.10 -m 'version 0.0.10'  
+```
+- bundle and deploy
+```
+cd copy_all_tabs/src
+zip -r -FS ../copy-all-tabs.zip \*
+```
 
 Log in and publish zip file.
 
 ## History
+
+0.0.10
+Merge in PR #16 and apply fix for #17
 
 0.0.9
 Version 0.0.9 provides a custom output setting in the settings panel to customize the way tab links are copied to the clipboard.
