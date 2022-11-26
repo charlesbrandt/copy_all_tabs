@@ -23,8 +23,8 @@ function getCurrentWindowTabs() {
  * Content Security Policy: The page’s settings blocked the loading of a resource at eval (“script-src”).
  */
 function convertTabToListItem(tab, format = "${tab.url}\r\n${tab.title}\r\n") {
-  format = format.replace("${tab.url}", tab.url);
-  const tabListItem = format.replace("${tab.title}", tab.title);
+  format = format.replaceAll("${tab.url}", tab.url);
+  const tabListItem = format.replaceAll("${tab.title}", tab.title);
   return tabListItem;
 }
 
